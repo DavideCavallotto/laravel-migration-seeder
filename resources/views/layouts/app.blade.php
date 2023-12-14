@@ -8,13 +8,13 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <header>header</header>
+    {{-- <header>header</header> --}}
 
     <main>
         @yield('content')
     </main>
 
-    <footer>footer</footer>
+    {{-- <footer>footer</footer> --}}
 
 </body>
 </html>
