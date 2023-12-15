@@ -1,39 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        @foreach ($trains as $train)
-        <div class="d-flex gap-2">
-            <p><span class="text-primary">Società:</span> {{$train->company}}</p>
-            <p><span class="text-primary">Stazione di Partenza:</span> {{$train->departure_station}}</p>
-            <p><span class="text-primary">Stazione di Arrivo:</span> {{$train->arrival_station}}</p>
-            <p><span class="text-primary">Orario di Partenza:</span> {{$train->departure_time}}</p>
-            <p><span class="text-primary">Orario di Arrivo:</span> {{$train->arrival_time}}</p>
-            <p><span class="text-primary">Codice Treno:</span> {{$train->train_code}}</p>
-            <p><span class="text-primary">Numero Carrozze:</span> {{$train->number_of_carriages}}</p>
-            @if ($train->on_time === 1) 
-             <p><span class="text-primary">In Orario:</span> Yes</p>      
-                
-            @else 
-             <p><span class="text-primary">In Orario:</span> No</p>
+<div class="container-md">
+    <div class="row">      
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Società</th>
+                    <th scope="col">Stazione di Partenza</th>
+                    <th scope="col">Stazione di Arrivo</th>
+                    <th scope="col">Orario di Partenza</th>
+                    <th scope="col">Orario di Arrivo</th>
+                    <th scope="col">Codice Treno</th>
+                    <th scope="col">Numero Carrozze</th>
+                    <th scope="col">In Orario</th>
+                    <th scope="col">Cancellato</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($trains as $train)
+                    <tr>                        
+                        <td>{{$train->company}}</td>
+                        <td>{{$train->departure_station}}</td>
+                        <td>{{$train->arrival_station}}</td>
+                        <td>{{$train->departure_time}}</td>
+                        <td>{{$train->arrival_time}}</td>
+                        <td>{{$train->train_code}}</td>
+                        <td>{{$train->number_of_carriages}}</td>
+                        <td>@if ($train->on_time === 1) 
+                            <p><span class="text-primary"></span> Yes</p>      
+                            
+                        @else 
+                            <p><span class="text-primary"></span> No</p>
+                        
+                            
+                        @endif</td>
+                        <td>@if ($train->cancelled === 1) 
+                            <p><span class="text-primary"></span> Yes</p>      
+                            
+                        @else 
+                            <p><span class="text-primary"></span> No</p>
+                        
+                            
+                        @endif</td>
+                        
+                    </tr>
+                    @endforeach
             
-                
-            @endif
-            @if ($train->cancelled === 1) 
-             <p><span class="text-primary">Cancellato:</span> Yes</p>      
-                
-            @else 
-             <p><span class="text-primary">Cancellato:</span> No</p>
-            
-                
-            @endif
-        
-            
-         </div>
-        @endforeach
+            </tbody>
+          </table>
 
     </div>
 </div>
 
-@endsection
+
+
+
+@foreach ($trains as $train)
+
+@endforeach
